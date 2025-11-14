@@ -1,16 +1,18 @@
-# Code Explanar
+# Writing Assistant
 
-AI-powered code explanation tool that helps you understand any code snippet in seconds.
+AI-powered writing assistant that helps you correct grammar, spelling, and punctuation mistakes instantly.
 
 🔗 **Live Demo**: [code-explannar-9baj.vercel.app](https://code-explannar-9baj.vercel.app)
 
 ## Features
 
-- 🎯 Supports 16+ programming languages
-- 🤖 AI-powered detailed explanations
+- ✍️ Grammar and spelling correction
+- 📝 Sentence structure improvement
+- 🤖 AI-powered detailed explanations of corrections
 - 🌓 Dark/Light mode
-- 📋 Copy to clipboard
+- 📋 Copy corrected text to clipboard
 - ⚡ Fast and responsive
+- 🎯 Professional writing suggestions
 
 ## Tech Stack
 
@@ -52,7 +54,3 @@ npm run dev
 
 1. **Backend**: Deploy `Server` folder, add `NEBIUS_API_KEY` and `FRONTEND_URL` env vars
 2. **Frontend**: Deploy `client` folder, add `VITE_API_URL` env var
-
-## Author
-
-Tashdiqur Rahman Shifat - [@TashdiqurRahmanShifat](https://github.com/TashdiqurRahmanShifat)

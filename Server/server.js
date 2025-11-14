@@ -34,21 +34,21 @@ const client = new OpenAI({
     apiKey: process.env.NEBIUS_API_KEY
 })
 
-app.post("/api/explain-code", async (req,res) => {
+app.post("/api/correct-text", async (req,res) => {
     try{
-        const {code,language}=req.body; // Destructure code and language from request body
-        if(!code || !language){
-            return res.status(400).json({ error:"Code and Language are required fields." });
+        const {text}=req.body; // Destructure text from request body
+        if(!text){
+            return res.status(400).json({ error:"Text is required." });
         }
 
         const messages=[
             {
                 role:"system",
-                content:"You are a code explanation assistant. Provide clear, concise explanations that fit within 2000 tokens. Focus on the most important aspects and be direct."
+                content:"You are a professional writing assistant. Correct grammar, spelling, punctuation, and improve sentence structure. Provide the corrected version followed by a brief explanation of the changes made. Format your response as:\n\nCorrected Text:\n[corrected version]\n\nChanges Made:\n- [list of corrections and improvements]"
             },
             {
                 role:"user",
-                content:`Explain the following ${language || "" } code in detail:\n\n\`\`\`${language || ""}\n${code}\n\`\`\``
+                content:`Please correct the following text:\n\n${text}`
             }
         ];
 
@@ -59,14 +59,14 @@ app.post("/api/explain-code", async (req,res) => {
             temperature:0.3, // Lower temperature for more focused responses
         });
 
-        const explanation=response.choices[0].message.content;
-        if(!explanation){
-            return res.status(500).json({ error:"Failed to generate explanation." });
+        const correction=response.choices[0].message.content;
+        if(!correction){
+            return res.status(500).json({ error:"Failed to generate correction." });
         }
         
-        res.json({explanation,language:language || "unknown"}); // Send back the explanation and language
+        res.json({correction}); // Send back the correction
     } catch(error){
-        console.error("Error in /api/explain-code:",error);
+        console.error("Error in /api/correct-text:",error);
         res.status(500).json({ error:"Internal Server Error", details:error.message });
     }
 })
