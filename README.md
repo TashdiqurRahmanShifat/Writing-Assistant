@@ -2,7 +2,7 @@
 
 AI-powered writing assistant that helps you correct grammar, spelling, and punctuation mistakes instantly.
 
-🔗 **Live Demo**: [code-explannar-9baj.vercel.app](https://code-explannar-9baj.vercel.app)
+🔗 **Live Demo**: [writing-assistant-nsh7.vercel.app](https://writing-assistant-nsh7.vercel.app)
 
 ## Features
 
